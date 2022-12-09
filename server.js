@@ -1,6 +1,6 @@
 // defining variables to work on for the application
 const express = require('express');
-const req = require('express/lib/request');
+
 const path = require('path');
 const api = require('./routes/api');
 const PORT = process.env.PORT || 3001;
