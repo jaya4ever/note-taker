@@ -2,7 +2,7 @@ const notes = require('express').Router();
 const path = require('path');
 const fs = require('fs');
 const db = require('../db/db.json');
-const uuid = require('..helpers/uuid');
+//const uuid = require('..helpers/uuid');
 const { json } = require('express/lib/response');
 const res = require('express/lib/response');
 
@@ -20,7 +20,7 @@ notes.post('./',(req,res)=>{
         const newNote = {
             title,
             text,
-            id:uuid()
+            //id:uuid()
         };
         db.push(newNote);
         let notesArr = JSON.stringyfy(db);
@@ -59,7 +59,7 @@ notes.delete('/:id',(req, res)=>{
             console.log('Notes have been deleted');
         }
     });
-    location.reload();
+    //location.reload();
 
 })
 module.exports = notes;
