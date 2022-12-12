@@ -2,7 +2,7 @@ const notes = require('express').Router();
 const path = require('path');
 const fs = require('fs');
 const db = require('../db/db.json');
-const uuid = require('..helper//uuid');
+const uuid = require('..helpers/uuid');
 const { json } = require('express/lib/response');
 const res = require('express/lib/response');
 
