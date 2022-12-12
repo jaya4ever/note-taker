@@ -40,4 +40,24 @@ notes.post('./',(req,res)=>{
         res.status(500).json('having error for the review');
     }
 });
+
+notes.delete('/:id',(req, res)=>{
+    const requestedId = req.params.id;
+    for(let i = 0; i < db.length; i++){
+        if(requestedId === db[i].id){
+            db.splice(i,1);
+            break;
+        }
+
+    }
+    fs.writeFile(path.join(__dirname,'../db/db.json'),JSON.stringify(db), (err)=>{
+        if(err){
+            console.log(err);
+        }else{
+            console.log('Notes have been deleted');
+        }
+    });
+    location.reload();
+
+})
 module.exports = notes;

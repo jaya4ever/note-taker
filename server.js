@@ -1,8 +1,10 @@
 // defining variables to work on for the application
+const { doesNotReject } = require('assert');
 const express = require('express');
 
 const path = require('path');
 const api = require('./routes/api');
+const notes = require('./routes/notes');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -26,6 +28,8 @@ app.get('*',(req,res)=>
 app.listen(PORT,()=>
 console.log(`App listening at http://localhost:${PORT}`)
 );
+
+
 
 
 
