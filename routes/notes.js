@@ -31,7 +31,7 @@ notes.post('./',(req,res)=>{
         });
         const response = {
             status: 'success',
-            body:'newNote'
+            body:'newNote',
         };
         console.log(response);
         res.status(201).json(response);
