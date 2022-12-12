@@ -2,13 +2,13 @@ const notes = require('express').Router();
 const path = require('path');
 const fs = require('fs');
 const db = require('../db/db.json');
-//const uuid = require('..helpers/uuid');
+//const uuid = require('.helpers/uuid');
 const { json } = require('express/lib/response');
 const res = require('express/lib/response');
 
 notes.get('/', (req, res)=>{
 console.info(`${req.method}request received for notes`);
-console.log(db)
+console.log(db);
 res.json(db);
 
 });
@@ -20,7 +20,7 @@ notes.post('./',(req,res)=>{
         const newNote = {
             title,
             text,
-            //id:uuid()
+            notes_id:uuid()
         };
         db.push(newNote);
         let notesArr = JSON.stringyfy(db);

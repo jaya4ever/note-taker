@@ -1,7 +1,7 @@
 // defining variables to work on for the application
 const { doesNotReject } = require('assert');
 const express = require('express');
-
+const uuid = require('./helpers/uuid');
 const path = require('path');
 const api = require('./routes/api');
 const notes = require('./routes/notes');
