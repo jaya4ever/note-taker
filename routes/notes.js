@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const db = require('../db/db.json');
 const { json } = require('express/lib/response');
-//const res = require('express/lib/response');
+const res = require('express/lib/response');
 
 notes.get('/', (req, res)=>{
 console.info(`${req.method}request received for notes`);
@@ -23,7 +23,7 @@ notes.post('./',(req,res)=>{
         db.push(newNote);
         let notesArr = JSON.stringyfy(db);
 
-        fs.writeFile(path.join(__dirname,'../db/db.json'),notesArr, function(err){
+        fs.writeFile(path.join(__dirname,'../db/db.json'),notesArr, (err)=>{
             if(err){
                 throw err;
             }console.log(`Review the ${newNote.title} that it written in JSON`);
@@ -40,3 +40,4 @@ notes.post('./',(req,res)=>{
         res.status(500).json('having error for the review');
     }
 });
+module.exports = notes;
