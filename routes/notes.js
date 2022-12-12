@@ -2,6 +2,7 @@ const notes = require('express').Router();
 const path = require('path');
 const fs = require('fs');
 const db = require('../db/db.json');
+const uuid = require('./uuid');
 const { json } = require('express/lib/response');
 const res = require('express/lib/response');
 
@@ -18,7 +19,8 @@ notes.post('./',(req,res)=>{
     if(title && text){
         const newNote = {
             title,
-            text
+            text,
+            id:uuid()
         };
         db.push(newNote);
         let notesArr = JSON.stringyfy(db);
