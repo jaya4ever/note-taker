@@ -3,25 +3,32 @@ const { doesNotReject } = require('assert');
 const express = require('express');
 //const uuid = require('./helpers/uuid');
 const path = require('path');
+// importing the api
 const api = require('./routes/api');
 const notes = require('./routes/notes');
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3004;
 
 const app = express();
-
+// this is middleware to parse JSON and urlencoded for te data
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use('/api',api);
+
 app.use(express.static('public'));
 
+// with this sent the api to route
+app.use('/api',api);
+
+//Getting route for index.html that is homepage
 app.get('/', (req,res)=>
 res.sendFile(path.join(__dirname,'./public/index.html'))
 );
 
+// getting routes for note page
 app.get('/notes',(req,res)=>
  res.sendFile(path.join(__dirname,'./public/notes.html'))
 );
 
+// this is the wildcard entry gor getting route to the homepage
 app.get('*',(req,res)=>
  res.sendFile(path.join(__dirname,'./public/index.html'))
 );

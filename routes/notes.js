@@ -1,3 +1,4 @@
+// defining variables for the required needed
 const notes = require('express').Router();
 const path = require('path');
 const fs = require('fs');
@@ -6,21 +7,22 @@ const uuid = require('../helpers/uuid');
 const { json } = require('express/lib/response');
 const res = require('express/lib/response');
 
+// getting routes to retrieving notes
 notes.get('/', (req, res)=>{
 console.info(`${req.method}request received for notes`);
 console.log(database);
 res.json(database);
 
 });
-
+// post request for the new note
 notes.post('/',(req,res)=>{
-    console.info(`${req.method} request to post the reviews`);
+    console.info(`${req.method} request received to add reviews`);
     const{title, text} = req.body;
     if(title && text){
         const newNote = {
             title,
             text,
-            id:uuid()
+            notes_id:uuid()
         };
         db.push(newNote);
         let notesArr = JSON.stringyfy(db);
@@ -28,7 +30,7 @@ notes.post('/',(req,res)=>{
         fs.writeFile(path.join(__dirname,'../db/db.json'),notesArr, (err)=>{
             if(err){
                 throw err;
-            }console.log(`Review the ${newNote.title} that it written in JSON`);
+            }console.log(`Review for ${newNote.title} that it written in JSON`);
             
         });
         const response = {
@@ -42,11 +44,12 @@ notes.post('/',(req,res)=>{
         res.status(500).json('having error for the review');
     }
 });
-
-notes.delete('/:id',(req, res)=>{
-    const requestedId = req.params.id;
-    for(let i = 0; i < db.length; i++){
-        if(requestedId === db[i].id){
+// * `DELETE /api/notes/:id` deleting notes
+//TODO: Delete notes not working.
+notes.delete('/:id', (req, res) => {
+    const idRequested = req.params.id;
+    for(let i = 0; i < database.length; i++){
+        if(idRequested === database[i].id){
             db.splice(i,1);
             break;
         }
