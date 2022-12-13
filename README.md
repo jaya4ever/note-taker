@@ -1,4 +1,5 @@
 # Note Taker
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ## This is the module challenge 11. This challenge is to create an application called Note Taker that can be used to write and save notes. This application  use an Express.js back end and  save and retrieve note data from a JSON file.I worked on this application with the help of my tutor, my team and was doing practicing. I was going through the class recording, [Mozilla]( https://developer.mozilla.org/en-US/docs/Web/JavaScript "dev.Mozilla"), [w3schools](https://www.w3schools.com/js/ "w3Schools"), asked questions in [stackoverflow](https://stackoverflow.com "stackoverflow.com"). I took help from everyone while conpleting this challenge.This is the first time I am deploying my application to Heroku.I finished this challenge with the help of the starter code given. I almost seems like finished this challenge except still working on the delete note. That is little challenging and I am struggling while completing this application. Given the note taker application really pushing and makes me understand how back end works.
 
 ### What I submitted

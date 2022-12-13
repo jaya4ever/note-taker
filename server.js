@@ -6,7 +6,7 @@ const path = require('path');
 // importing the api
 const api = require('./routes/api');
 const notes = require('./routes/notes');
-const PORT = process.env.PORT || 3004;
+const PORT = process.env.PORT || 4006;
 
 const app = express();
 // this is middleware to parse JSON and urlencoded for te data

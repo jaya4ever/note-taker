@@ -22,7 +22,7 @@ notes.post('/',(req,res)=>{
         const newNote = {
             title,
             text,
-            notes_id:uuid()
+            id:uuid()
         };
         db.push(newNote);
         let notesArr = JSON.stringyfy(db);
@@ -44,7 +44,7 @@ notes.post('/',(req,res)=>{
         res.status(500).json('having error for the review');
     }
 });
-// * `DELETE /api/notes/:id` deleting notes
+// * DELETE /api/notes/:id deleting notes
 //TODO: Delete notes not working.
 notes.delete('/:id', (req, res) => {
     const idRequested = req.params.id;
@@ -62,7 +62,7 @@ notes.delete('/:id', (req, res) => {
             console.log('Notes have been deleted');
         }
     });
-    res.json(database);
+    //res.json(database);
 
 })
 module.exports = notes;
