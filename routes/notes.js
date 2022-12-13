@@ -13,7 +13,7 @@ res.json(db);
 
 });
 
-notes.post('./',(req,res)=>{
+notes.post('/',(req,res)=>{
     console.info(`${req.method} request to post the reviews`);
     const{title, text} = req.body;
     if(title && text){

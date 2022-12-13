@@ -1,5 +1,5 @@
 // defining variables to work on for the application
-/*const { doesNotReject } = require('assert');
+const { doesNotReject } = require('assert');
 const express = require('express');
 //const uuid = require('./helpers/uuid');
 const path = require('path');
@@ -27,9 +27,9 @@ app.get('*',(req,res)=>
 
 app.listen(PORT,()=>
 console.log(`App listening at http://localhost:${PORT}`)
-);*/
+);
 
-const express = require("express");
+/*const express = require("express");
 const path = require("path");
 const util = require("util");
 const fs = require("fs");
@@ -122,8 +122,8 @@ const writeNotes = async (data) => {
 
 // Initiate Listener to start server
 app.listen(PORT, function () {
-    console.log("App listening on PORT: " + PORT);
-});
+    console.log(`App listening at http://localhost:${PORT}`);
+});*/
 
 
 
