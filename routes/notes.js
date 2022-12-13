@@ -1,15 +1,15 @@
 const notes = require('express').Router();
 const path = require('path');
 const fs = require('fs');
-const db = require('../db/db.json');
+const database = require('../db/db.json');
 const uuid = require('../helpers/uuid');
 const { json } = require('express/lib/response');
 const res = require('express/lib/response');
 
 notes.get('/', (req, res)=>{
 console.info(`${req.method}request received for notes`);
-console.log(db);
-res.json(db);
+console.log(database);
+res.json(database);
 
 });
 
@@ -59,7 +59,7 @@ notes.delete('/:id',(req, res)=>{
             console.log('Notes have been deleted');
         }
     });
-    //location.reload();
+    res.json(database);
 
 })
 module.exports = notes;
