@@ -1,5 +1,5 @@
 // defining variables for the required needed
-const notes = require('express').Router();
+/*const notes = require('express').Router();
 const path = require('path');
 const fs = require('fs');
 const database = require('../db/db.json');
@@ -65,4 +65,4 @@ notes.delete('/:id', (req, res) => {
     //res.json(database);
 
 })
-module.exports = notes;
+module.exports = notes;*/
