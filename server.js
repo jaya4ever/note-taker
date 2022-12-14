@@ -2,7 +2,7 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
-const database = require("./db/db")
+const noteDatabase = require("./db/db")
 
 
 // this is set for the express
@@ -14,12 +14,9 @@ const PORT = process.env.PORT || 3005;
 app.use(express.static('public'));
 
 
-
-
 // this requires for the api call
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 
 
 
@@ -34,18 +31,14 @@ app.get("/notes", function (req, res) {
 })
 
 
-// GET, POST, DELETE API Endpoints.
-
-
 //  GET and POST functions 
 app.route("/api/notes")
 
-    // taking/ grabbing the notes list
+    // taking/grabbing the notes list
     .get(function (req, res) {
-        res.json(database);
+        res.json(noteDatabase);
     })
 
-    
 
     // this will add the new note to the db.json
     .post(function (req, res) {
@@ -54,10 +47,10 @@ app.route("/api/notes")
 
         // allowing test note to the original
         let highestId = 99;
-        
+
         // looping through the array to find the highest id
-        for (let i = 0; i < database.length; i++) {
-            let individualNote = database[i];
+        for (let i = 0; i < noteDatabase.length; i++) {
+            let individualNote = noteDatabase[i];
 
             if (individualNote.id > highestId) {
                 // in notesarray highest id will be the highest
@@ -66,12 +59,12 @@ app.route("/api/notes")
         }
         // assigning ID to the new note
         newNote.id = highestId + 1;
-       
+
         //Pushing it to db.json
-        database.push(newNote)
+        noteDatabase.push(newNote)
 
         // again writing the db.json file 
-        fs.writeFile(jsonFilePath, JSON.stringify(database), function (err) {
+        fs.writeFile(jsonFilePath, JSON.stringify(noteDatabase), function (err) {
 
             if (err) {
                 return console.log(err);
@@ -87,16 +80,16 @@ app.delete("/api/notes/:id", function (req, res) {
     let jsonFilePath = path.join(__dirname, "/db/db.json");
 
     // requesting to delete it by id
-    for (let i = 0; i < database.length; i++) {
+    for (let i = 0; i < noteDatabase.length; i++) {
 
-        if (database[i].id == req.params.id) {
-           
-            database.splice(i, 1); // Splice takes i position and then it will delete the 1 note.
+        if (noteDatabase[i].id == req.params.id) {
+
+            noteDatabase.splice(i, 1); // Splice takes i position and then it will delete the 1 note.
             break;
         }
     }
     // writing the db.json again
-    fs.writeFileSync(jsonFilePath, JSON.stringify(database), function (err) {
+    fs.writeFileSync(jsonFilePath, JSON.stringify(noteDatabase), function (err) {
 
         if (err) {
             return console.log(err);
@@ -104,7 +97,7 @@ app.delete("/api/notes/:id", function (req, res) {
             console.log("Your note was deleted!");
         }
     });
-    res.json(database);
+    res.json(noteDatabase);
 });
 
 
