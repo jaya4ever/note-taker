@@ -3,11 +3,12 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const noteDatabase = require("./db/db")
+const uuid = require('./helpers/uuid')
 
 
 // this is set for the express
 const app = express();
-const PORT = process.env.PORT || 3005;
+const PORT = process.env.PORT || 3000;
 
 
 // linking it to assets my file path
@@ -42,7 +43,17 @@ app.route("/api/notes")
 
     // this will add the new note to the db.json
     .post(function (req, res) {
-        let jsonFilePath = path.join(__dirname, "/db/db.json");
+        const { title, text } = req.body;
+    if (title && text) {
+        const newNote = {
+            title,
+            text,
+            id: uuid()
+        }
+        noteDatabase.push(newNote);
+        //let notesArray = JSON.stringify(noteDatabase);
+    }
+        /*let jsonFilePath = path.join(__dirname, "/db/db.json");
         let newNote = req.body;
 
         // allowing test note to the original
@@ -61,19 +72,21 @@ app.route("/api/notes")
         newNote.id = highestId + 1;
 
         //Pushing it to db.json
-        noteDatabase.push(newNote)
+        noteDatabase.push(newNote)*/
 
-        // again writing the db.json file 
+        
+        let jsonFilePath = path.join(__dirname, "/db/db.json");
         fs.writeFile(jsonFilePath, JSON.stringify(noteDatabase), function (err) {
 
-            if (err) {
+            if (err)  
+            {
                 return console.log(err);
             }
             console.log("Your note was saved!");
-        });
+        })
         // giving back the response for the user new note
-        res.json(newNote);
-    });
+        //res.json(newNote);
+    })
 
 // deleting the note base on ID
 app.delete("/api/notes/:id", function (req, res) {
