@@ -10,6 +10,7 @@ notes.get('/notes', (req, res) => {
 
     read('./db/db.json').then((notes) => res.json(JSON.parse(notes))).catch((err) => res.json(err))
 });
+
 // post request for the new note
 notes.post('/notes', (req, res) => {
     console.info(`${req.method} request received to add reviews`);
@@ -29,7 +30,8 @@ notes.post('/notes', (req, res) => {
     }
  
 });
-// * DELETE /api/notes/:id deleting notes
+
+//  DELETE /notes/:id deleting notes
 //TODO: Delete notes not working.
 notes.delete('/notes/:id', (req, res) => {
     readThenDelete(req.params.id, './db/db.json')

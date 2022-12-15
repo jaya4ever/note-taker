@@ -1,10 +1,12 @@
+//defining variables to require fs and util
 const fs = require('fs')
 const util = require('util')
 
 
-
+//read note by using util.promisify
 const read = util.promisify(fs.readFile)
 
+// for writting notes and give the result at the final file destination
 const write = (fileDestination, content) => {
     fs.writeFile(fileDestination, JSON.stringify(content), (err) => {
         if (err) {
@@ -16,6 +18,7 @@ const write = (fileDestination, content) => {
     })
 }
 
+// this will first read and then write the name 
 const readThenWrite = (note, fileName) => {
     fs.readFile(fileName, 'utf8', (err, data) => {
 
@@ -30,6 +33,7 @@ const readThenWrite = (note, fileName) => {
     })
 }
 
+// after reading the note it is going to delete by using id
 const readThenDelete = (id, fileName) => {
     fs.readFile(fileName, 'utf8', (err, data) => {
 
