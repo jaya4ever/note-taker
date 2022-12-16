@@ -12,6 +12,10 @@
 ### This is the URL of my deployed application to Heroku
 [Heroku](https://evening-reef-96727.herokuapp.com "Heroku app")
 
+### This is the Video of my Note-Taker application
+[Note-Taker.webm](https://user-images.githubusercontent.com/111536082/208134955-7cf888be-db97-40a0-be39-5ec0c8abf650.webm)
+
+
 ## User Story
 
 ```
