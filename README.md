@@ -15,6 +15,9 @@
 ### This is the Video of my Note-Taker application
 [Note-Taker.webm](https://user-images.githubusercontent.com/111536082/208134955-7cf888be-db97-40a0-be39-5ec0c8abf650.webm)
 
+### This is the screenshot of my Note-Taker application
+![note-taker](https://user-images.githubusercontent.com/111536082/208136918-de25a76b-c938-4032-89ac-aeaa2fbe01d8.jpeg)
+
 
 ## User Story
 
